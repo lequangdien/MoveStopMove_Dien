@@ -43,10 +43,11 @@ public class Character : MonoBehaviour
     protected virtual void Start()
     {
         Instantiate(weapon, holdWeapon);
-
+     
     }
     protected virtual void Update()
     {
+       // Debug.Log(circleRadius);
         if (isDead)
         {
             return;
@@ -58,7 +59,9 @@ public class Character : MonoBehaviour
             AttackBot();
             _animator.SetBool(ConstString.is_Attack, true);
             Invoke(nameof(ResetAttack), 2f);
+          //  AttackBotTest();
         }
+        
     }
     public void AttackBot()
     {
@@ -71,9 +74,12 @@ public class Character : MonoBehaviour
         bulletOjb.SeekDirec(direc);
         holdWeapon.gameObject.SetActive(false);
 
-
+        
     }
-    public void IsDead()
+
+  
+    
+    public void OnDead()
     {
         isDead = true;
         isIdle = false;
@@ -84,6 +90,7 @@ public class Character : MonoBehaviour
         Invoke(nameof(DestroyGameObject),2f);
     }
     public void DestroyGameObject() {
+            
         Destroy(gameObject);
     }
 

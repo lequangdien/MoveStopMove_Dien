@@ -66,11 +66,15 @@
     <Compile Include="Assets\_Game\Scrips\PlayerController.cs" />
     <Compile Include="Assets\_Game\Scrips\NavMesh2.cs" />
     <Compile Include="Assets\_Game\Scrips\ISate\IState.cs" />
+    <Compile Include="Assets\_Game\Scrips\WeaponData\Weapon.cs" />
     <Compile Include="Assets\_Game\Joystick Pack\Examples\JoystickSetterExample.cs" />
     <Compile Include="Assets\_Game\Scrips\Bullet.cs" />
     <Compile Include="Assets\_Game\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
+    <Compile Include="Assets\_Game\Scrips\WeaponData\DataManager.cs" />
+    <Compile Include="Assets\_Game\Scrips\WeaponData\WeaponData.cs" />
     <Compile Include="Assets\_Game\Scrips\Bot.cs" />
     <Compile Include="Assets\_Game\Scrips\ISate\PlatrolState.cs" />
+    <Compile Include="Assets\_Game\Scrips\WeaponData\WeaponDataSO.cs" />
     <Compile Include="Assets\_Game\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
     <Compile Include="Assets\_Game\Scrips\Character.cs" />
     <Compile Include="Assets\_Game\Joystick Pack\Scripts\Base\Joystick.cs" />

@@ -12,20 +12,22 @@ public class Bullet : MonoBehaviour
     public float time=1f;
     private Vector3 direction;
 
-    private void Update()
-    {
-        rb.velocity = direction.normalized * speed;
-   
-    }
+    private Transform target;
 
     public void SeekDirec(Vector3 direction)
     {
+        rb.velocity = direction.normalized * speed;
         this.direction = direction;
+        StartCoroutine(SelfDestruct());
     }
-    public void Swpan()
+    public IEnumerator SelfDestruct()
     {
-     //   Destroy(gameObject);
-       LeanPool.Despawn(gameObject);
+        yield return new WaitForSeconds(0.7f);
+        LeanPool.Despawn(gameObject);
+    }
+    public void OnInIt()
+    {
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,13 +36,15 @@ public class Bullet : MonoBehaviour
         {
             if(other.name != ShooterName)
             {
-                Destroy(gameObject);
+                LeanPool.Despawn(gameObject);
                 Character character = other.GetComponent<Character>();
-                character.IsDead();
-                Swpan();
+                character.OnDead();
+                StopAllCoroutines();
+
                
             }
         }
+      
     }
 
 

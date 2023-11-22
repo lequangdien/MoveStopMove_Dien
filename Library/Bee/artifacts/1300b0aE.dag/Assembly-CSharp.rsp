@@ -378,6 +378,10 @@
 "Assets/_Game/Scrips/ISate/PlatrolState.cs"
 "Assets/_Game/Scrips/NavMesh2.cs"
 "Assets/_Game/Scrips/PlayerController.cs"
+"Assets/_Game/Scrips/WeaponData/DataManager.cs"
+"Assets/_Game/Scrips/WeaponData/Weapon.cs"
+"Assets/_Game/Scrips/WeaponData/WeaponData.cs"
+"Assets/_Game/Scrips/WeaponData/WeaponDataSO.cs"
 -langversion:9.0
 
 /deterministic

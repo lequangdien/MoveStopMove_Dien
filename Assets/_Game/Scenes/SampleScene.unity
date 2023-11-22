@@ -338,7 +338,7 @@ MonoBehaviour:
   botLayerMark:
     serializedVersion: 2
     m_Bits: 320
-  circleRadius: 5.96
+  circleRadius: 5.59
   nearEnemy: {fileID: 0}
   direc: {x: 0, y: 0, z: 0}
   holdWeapon: {fileID: 1938680199}
@@ -559,7 +559,7 @@ MonoBehaviour:
   prefab: {fileID: 6445870818558285268, guid: 103697225ccde5f4689d38bdb9aae71d, type: 3}
   notification: 3
   strategy: 0
-  preload: 5
+  preload: 10
   capacity: 0
   recycle: 0
   persist: 0
@@ -2424,6 +2424,10 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 4866416447885261343, guid: 6d5ec40706d8046438dfe24fcd8d91df, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6223142089177559421, guid: 6d5ec40706d8046438dfe24fcd8d91df, type: 3}
       propertyPath: botLayerMark.m_Bits
       value: 320
@@ -3353,6 +3357,34 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 4866416447885261343, guid: 6d5ec40706d8046438dfe24fcd8d91df, type: 3}
+      propertyPath: m_Size.x
+      value: 1.200552
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866416447885261343, guid: 6d5ec40706d8046438dfe24fcd8d91df, type: 3}
+      propertyPath: m_Size.y
+      value: 2.82976
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866416447885261343, guid: 6d5ec40706d8046438dfe24fcd8d91df, type: 3}
+      propertyPath: m_Size.z
+      value: 1.0968142
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866416447885261343, guid: 6d5ec40706d8046438dfe24fcd8d91df, type: 3}
+      propertyPath: m_Center.x
+      value: -0.10027599
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866416447885261343, guid: 6d5ec40706d8046438dfe24fcd8d91df, type: 3}
+      propertyPath: m_Center.y
+      value: 0.91488004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866416447885261343, guid: 6d5ec40706d8046438dfe24fcd8d91df, type: 3}
+      propertyPath: m_Center.z
+      value: -0.20229387
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866416447885261343, guid: 6d5ec40706d8046438dfe24fcd8d91df, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6223142089177559421, guid: 6d5ec40706d8046438dfe24fcd8d91df, type: 3}
       propertyPath: circleRadius
       value: 5.64
@@ -3371,7 +3403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7221830073302179595, guid: 6d5ec40706d8046438dfe24fcd8d91df, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.37
+      value: 9.36
       objectReference: {fileID: 0}
     - target: {fileID: 7221830073302179595, guid: 6d5ec40706d8046438dfe24fcd8d91df, type: 3}
       propertyPath: m_LocalRotation.w
