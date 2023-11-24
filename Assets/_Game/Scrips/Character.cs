@@ -16,34 +16,29 @@ public class Character : MonoBehaviour
     public bool isAttack = false;
     public bool isDead = false;
 
-    //   [SerializeField] private LayerMask groundLayer;
+    
 
     [Header("Collier Info")]
     [SerializeField] public LayerMask botLayerMark;
     [SerializeField] public float circleRadius;
-   // [SerializeField] public LayerMask wallLayerMark;
-   // public Transform target;
+  
     public Transform nearEnemy;
     public Vector3 direc;
-
-
+    protected WeaponData weaponData;
+    protected Bullet bullet;
+    public string currentAnimName;
     [Header("Weapon Info")]
     [SerializeField] public Transform holdWeapon;
-    [SerializeField] public GameObject weapon;
-    [SerializeField] public GameObject bulletPrefab;
-    public Transform firePos;
-    //[SerializeField] private Transform firePos;
-
     [SerializeField] public float _moveSpeed;
-    public string currentAnimName;
-    //public float attackDuration = 5.0f;
-    //private IEnumerator attackCoroutine;
-
-
+    [SerializeField] public Weapontype currentWeaponType;
+    //  [SerializeField] public GameObject weapon;
+    //  [SerializeField] public GameObject bulletPrefab;
+    public Transform firePos;
+  
     protected virtual void Start()
     {
-        Instantiate(weapon, holdWeapon);
-     
+      //  Instantiate(weapon, holdWeapon);
+
     }
     protected virtual void Update()
     {
@@ -59,7 +54,7 @@ public class Character : MonoBehaviour
             AttackBot();
             _animator.SetBool(ConstString.is_Attack, true);
             Invoke(nameof(ResetAttack), 2f);
-          //  AttackBotTest();
+          
         }
         
     }
@@ -67,7 +62,8 @@ public class Character : MonoBehaviour
     {
 
         direc = nearEnemy.position - transform.position;
-        GameObject spawnBullet = LeanPool.Spawn(bulletPrefab,firePos.position,firePos.rotation);
+        Bullet spawnBullet = LeanPool.Spawn(weaponData.bullet,firePos.position,firePos.rotation);
+        spawnBullet.transform.rotation= Quaternion.Euler(-90,0,0);
       //  GameObject spawnBullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);
         spawnBullet.GetComponent<Bullet>().ShooterName=gameObject.name;
         Bullet bulletOjb = spawnBullet.GetComponent<Bullet>();
@@ -76,7 +72,7 @@ public class Character : MonoBehaviour
 
         
     }
-
+    
   
     
     public void OnDead()
@@ -84,7 +80,7 @@ public class Character : MonoBehaviour
         isDead = true;
         isIdle = false;
         _animator.SetBool(ConstString.is_Dead, true);
-        int defaultLayer = LayerMask.NameToLayer("Default");
+        int defaultLayer = LayerMask.NameToLayer(ConstString.Default_Layer);
         gameObject.layer = defaultLayer;
         Debug.Log("trung dan");
         Invoke(nameof(DestroyGameObject),2f);
@@ -114,7 +110,7 @@ public class Character : MonoBehaviour
                 }
 
             }
-            //Facing enemy if player found them
+           
             if (isIdle)
             {
                 transform.LookAt(nearEnemy);
@@ -140,4 +136,9 @@ public class Character : MonoBehaviour
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, circleRadius);
     }
+    public void SpawnWeapon()
+    {
+        Instantiate(weaponData.weapon,holdWeapon);
+    }
 }
+

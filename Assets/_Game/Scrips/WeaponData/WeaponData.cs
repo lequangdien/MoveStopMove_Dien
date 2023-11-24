@@ -6,6 +6,7 @@ using UnityEngine;
     {
         hammer,
         knife,
+        Axe,
     }
     [Serializable]
     public class WeaponData
@@ -13,6 +14,7 @@ using UnityEngine;
         public Weapontype weaponType;
         public Bullet bullet;
         public Weapon weapon;
+        
        // public float range;
     }
 

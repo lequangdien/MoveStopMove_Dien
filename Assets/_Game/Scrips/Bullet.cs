@@ -22,19 +22,16 @@ public class Bullet : MonoBehaviour
     }
     public IEnumerator SelfDestruct()
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.65f);
         LeanPool.Despawn(gameObject);
     }
-    public void OnInIt()
-    {
-
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(ConstString.Bot) || other.CompareTag(ConstString.Player))
         {
-            if(other.name != ShooterName)
+            if(other.name != ShooterName )
             {
                 LeanPool.Despawn(gameObject);
                 Character character = other.GetComponent<Character>();

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponListData:
   - weaponType: 0
-    bullet: {fileID: 0}
-    weapon: {fileID: 0}
-  - weaponType: 1
-    bullet: {fileID: 0}
-    weapon: {fileID: 0}
+    bullet: {fileID: -5486584726053668461, guid: 103697225ccde5f4689d38bdb9aae71d, type: 3}
+    weapon: {fileID: -4919061064378562705, guid: a40878bc7862b8947b99d916fb14f47b, type: 3}
+  - weaponType: 2
+    bullet: {fileID: 5214798476202892751, guid: f178e372b43e22249b1c1eb91d8ed53d, type: 3}
+    weapon: {fileID: 8492068258500866294, guid: eb6ab87aa25a2b34ba40957f2e637a85, type: 3}

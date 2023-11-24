@@ -11,4 +11,5 @@ public class ConstString : MonoBehaviour
     public const string is_Dead = "IsDead";
     public const string Ground = "Ground";
     public const string Bullet = "Bullet";
+    public const string Default_Layer = "Default";
 }

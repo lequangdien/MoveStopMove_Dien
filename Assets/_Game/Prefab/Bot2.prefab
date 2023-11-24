@@ -90,7 +90,7 @@ MonoBehaviour:
   nearEnemy: {fileID: 0}
   direc: {x: 0, y: 0, z: 0}
   holdWeapon: {fileID: 6583572378491083686}
-  weapon: {fileID: 6955135116051625709, guid: a40878bc7862b8947b99d916fb14f47b, type: 3}
+  weapon: {fileID: 6445870818558285268, guid: 103697225ccde5f4689d38bdb9aae71d, type: 3}
   bulletPrefab: {fileID: 6445870818558285268, guid: 103697225ccde5f4689d38bdb9aae71d, type: 3}
   firePos: {fileID: 7690006678560693024}
   _moveSpeed: 0

@@ -6,10 +6,13 @@ using UnityEngine.AI;
 
 public class Bot :Character
 {
+  
+
     private IState currentState;
     public Vector3 newPos;
     public float wanderRadius=6f;
-    public NavMeshAgent agent; 
+    public NavMeshAgent agent;
+  
     public bool isTarget => Vector3.Distance(transform.position,newPos)<0.1f;
     // [SerializeField] public Animator _animatorBot;
     protected override void Start()
@@ -17,6 +20,19 @@ public class Bot :Character
         ChangeState(new PlatrolState());
         base.Start();
 
+        OnInit();
+        SpawnWeapon();
+     
+
+    }
+    public void OnInit()
+    {
+        if (weaponData == null)
+        {
+
+            currentWeaponType = Weapontype.hammer;
+            weaponData =DataManager.Instance.GetWeaponData(currentWeaponType);
+        }
     }
     protected override void Update()
     {

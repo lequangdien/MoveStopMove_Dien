@@ -5,8 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody),typeof(CapsuleCollider))]
 public class PlayerController : Character
 {
-     
- 
+  
+    private HammerWeapon hammerWeapon;
+    private PlayerController player;
+
+    protected override void Start()
+    {
+        SpawnWeapon();
+        currentWeaponType = Weapontype.hammer;
+    }
+    public void OnInit()
+    {
+        if (weaponData ==null)
+        {
+            weaponData = DataManager.Instance.GetWeaponData(currentWeaponType);
+        }
+    }
     private void FixedUpdate()
     {
         _rigibody.velocity = new Vector3(_joystick.Horizontal * _moveSpeed, _rigibody.velocity.y, _joystick.Vertical * _moveSpeed);
