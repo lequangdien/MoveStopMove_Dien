@@ -32,15 +32,15 @@ public class PlayerController : Character
            
             
             isIdle = false;
-            _animator.SetBool(ConstString.is_Idle,isIdle);
-            _animator.SetBool(ConstString.is_Attack, false);
+            _animator.SetBool(ConstString.IS_IDLE,isIdle);
+            _animator.SetBool(ConstString.IS_ATTACK, false);
         }
 
         else
         {
            
            isIdle = true;
-            _animator.SetBool(ConstString.is_Idle, isIdle);
+            _animator.SetBool(ConstString.IS_IDLE, isIdle);
         }
 
     }

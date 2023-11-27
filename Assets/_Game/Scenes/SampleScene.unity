@@ -203,12 +203,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   circleRadius: 0
-  nearEnemy: {fileID: 0}
-  direc: {x: 0, y: 0, z: 0}
-  currentAnimName: 
   holdWeapon: {fileID: 0}
   _moveSpeed: 0
   currentWeaponType: 0
+  nearEnemy: {fileID: 0}
+  direc: {x: 0, y: 0, z: 0}
+  currentAnimName: 
+  scale: {x: 1, y: 1, z: 1}
   firePos: {fileID: 0}
   newPos: {x: 0, y: 0, z: 0}
   wanderRadius: 6
@@ -293,7 +294,7 @@ GameObject:
   - component: {fileID: 195357016}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -338,12 +339,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   circleRadius: 5.59
+  holdWeapon: {fileID: 1938680199}
+  _moveSpeed: 6
+  currentWeaponType: 2
   nearEnemy: {fileID: 0}
   direc: {x: 0, y: 0, z: 0}
   currentAnimName: 
-  holdWeapon: {fileID: 1938680199}
-  _moveSpeed: 6
-  currentWeaponType: 0
+  scale: {x: 1, y: 1, z: 1}
   firePos: {fileID: 940726139}
 --- !u!54 &195357015
 Rigidbody:
@@ -2766,12 +2768,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   circleRadius: 0
-  nearEnemy: {fileID: 0}
-  direc: {x: 0, y: 0, z: 0}
-  currentAnimName: 
   holdWeapon: {fileID: 0}
   _moveSpeed: 0
   currentWeaponType: 0
+  nearEnemy: {fileID: 0}
+  direc: {x: 0, y: 0, z: 0}
+  currentAnimName: 
+  scale: {x: 1, y: 1, z: 1}
   firePos: {fileID: 0}
   newPos: {x: 0, y: 0, z: 0}
   wanderRadius: 6

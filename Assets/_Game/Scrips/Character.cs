@@ -16,21 +16,21 @@ public class Character : MonoBehaviour
     public bool isAttack = false;
     public bool isDead = false;
 
-    
-
     [Header("Collier Info")]
     [SerializeField] public LayerMask botLayerMark;
     [SerializeField] public float circleRadius;
-  
-    public Transform nearEnemy;
-    public Vector3 direc;
-    protected WeaponData weaponData;
-    protected Bullet bullet;
-    public string currentAnimName;
+   
+
     [Header("Weapon Info")]
     [SerializeField] public Transform holdWeapon;
     [SerializeField] public float _moveSpeed;
     [SerializeField] public Weapontype currentWeaponType;
+    protected WeaponData weaponData;
+    protected Bullet bullet;
+    public Transform nearEnemy;
+    public Vector3 direc;
+    public string currentAnimName;
+    public Vector3 scale = new Vector3(1, 1, 1);
     //  [SerializeField] public GameObject weapon;
     //  [SerializeField] public GameObject bulletPrefab;
     public Transform firePos;
@@ -52,7 +52,7 @@ public class Character : MonoBehaviour
         {
             isAttack = true;
             AttackBot();
-            _animator.SetBool(ConstString.is_Attack, true);
+            _animator.SetBool(ConstString.IS_ATTACK, true);
             Invoke(nameof(ResetAttack), 2f);
           
         }
@@ -64,10 +64,10 @@ public class Character : MonoBehaviour
         direc = nearEnemy.position - transform.position;
         Bullet spawnBullet = LeanPool.Spawn(weaponData.bullet,firePos.position,firePos.rotation);
         spawnBullet.transform.rotation= Quaternion.Euler(-90,0,0);
-      //  GameObject spawnBullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);
-        spawnBullet.GetComponent<Bullet>().ShooterName=gameObject.name;
-        Bullet bulletOjb = spawnBullet.GetComponent<Bullet>();
-        bulletOjb.SeekDirec(direc);
+        //  GameObject spawnBullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+        spawnBullet.shooter= this;
+        // spawnBullet.ShooterName = gameObject;
+        spawnBullet.SeekDirec(direc);
         holdWeapon.gameObject.SetActive(false);
 
         
@@ -79,8 +79,8 @@ public class Character : MonoBehaviour
     {
         isDead = true;
         isIdle = false;
-        _animator.SetBool(ConstString.is_Dead, true);
-        int defaultLayer = LayerMask.NameToLayer(ConstString.Default_Layer);
+        _animator.SetBool(ConstString.IS_DEAD, true);
+        int defaultLayer = LayerMask.NameToLayer(ConstString.DEFAULT_LAYER);
         gameObject.layer = defaultLayer;
         Debug.Log("trung dan");
         Invoke(nameof(DestroyGameObject),2f);
@@ -126,7 +126,7 @@ public class Character : MonoBehaviour
     {
         isAttack = false;
         holdWeapon.gameObject.SetActive(true);
-        _animator.SetBool(ConstString.is_Attack, false);
+        _animator.SetBool(ConstString.IS_ATTACK, false);
     }
 
     

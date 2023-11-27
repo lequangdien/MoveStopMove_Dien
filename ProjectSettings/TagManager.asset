@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Bot
   - Bullet
+  - Character
   layers:
   - Default
   - TransparentFX

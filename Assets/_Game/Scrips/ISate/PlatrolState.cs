@@ -21,12 +21,12 @@ public class PlatrolState : IState
         if (!bot.isTarget)
         {
             bot.isIdle = false;
-            bot._animator.SetBool(ConstString.is_Idle,false);
+            bot._animator.SetBool(ConstString.IS_IDLE,false);
         }
         else
         {
             bot.isIdle = true;
-            bot._animator.SetBool(ConstString.is_Idle, true);
+            bot._animator.SetBool(ConstString.IS_IDLE, true);
         }
     }
     public void OnExit(Bot bot) 
