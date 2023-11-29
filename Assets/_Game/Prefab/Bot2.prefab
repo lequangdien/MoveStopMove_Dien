@@ -99,6 +99,7 @@ MonoBehaviour:
   newPos: {x: 0, y: 0, z: 0}
   wanderRadius: 6
   agent: {fileID: 3540386919387684391}
+  indicate: {fileID: 6552384362137868439}
 --- !u!195 &3540386919387684391
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -270,7 +271,7 @@ GameObject:
   - component: {fileID: 8506374245013262528}
   - component: {fileID: 1133572657151310547}
   m_Layer: 0
-  m_Name: circle-outline3
+  m_Name: Indicate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

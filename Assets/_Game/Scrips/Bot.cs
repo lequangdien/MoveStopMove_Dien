@@ -12,7 +12,9 @@ public class Bot :Character
     public Vector3 newPos;
     public float wanderRadius=6f;
     public NavMeshAgent agent;
-  
+    public GameObject indicate;
+   
+
     public bool isTarget => Vector3.Distance(transform.position,newPos)<0.1f;
     // [SerializeField] public Animator _animatorBot;
     protected override void Start()
@@ -25,15 +27,7 @@ public class Bot :Character
      
 
     }
-    public void OnInit()
-    {
-        if (weaponData == null)
-        {
-
-            currentWeaponType = Weapontype.hammer;
-            weaponData =DataManager.Instance.GetWeaponData(currentWeaponType);
-        }
-    }
+   
     protected override void Update()
     {
        
@@ -43,6 +37,15 @@ public class Bot :Character
             currentState.OnExecute(this);
         }
 
+    }
+    public void OnInit()
+    {
+        if (weaponData == null)
+        {
+
+            currentWeaponType = Weapontype.hammer;
+            weaponData = DataManager.Instance.GetWeaponData(currentWeaponType);
+        }
     }
 
     public void SetDirection()

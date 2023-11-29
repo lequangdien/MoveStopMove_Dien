@@ -34,7 +34,8 @@ public class Character : MonoBehaviour
     //  [SerializeField] public GameObject weapon;
     //  [SerializeField] public GameObject bulletPrefab;
     public Transform firePos;
-  
+    public bool isIndicate=false;
+
     protected virtual void Start()
     {
       //  Instantiate(weapon, holdWeapon);
@@ -83,7 +84,7 @@ public class Character : MonoBehaviour
         int defaultLayer = LayerMask.NameToLayer(ConstString.DEFAULT_LAYER);
         gameObject.layer = defaultLayer;
         Debug.Log("trung dan");
-        Invoke(nameof(DestroyGameObject),2f);
+        Invoke(nameof(DestroyGameObject),0.5f);
     }
     public void DestroyGameObject() {
             
@@ -95,30 +96,56 @@ public class Character : MonoBehaviour
 
         Collider[] bot = Physics.OverlapSphere(transform.position, circleRadius, botLayerMark);
         float miniumDistance = Mathf.Infinity;
+        bool isAnyBotInRange = false;
         if (bot.Length >1)
         {
             foreach (Collider collider in bot)
             {
                 if (collider.gameObject != this.gameObject)
                 {
+                    
                     float distance = Vector3.Distance(transform.position, collider.transform.position);
                     if (distance < miniumDistance)
                     {
                         miniumDistance = distance;
                         nearEnemy = collider.transform;
+                        
                     }
+                    isAnyBotInRange = true;
                 }
 
             }
-           
-            if (isIdle)
+            if (isAnyBotInRange)
             {
-                transform.LookAt(nearEnemy);
+                if (isIdle)
+                {
+                    transform.LookAt(nearEnemy);
+                    if (!isIndicate)
+                    {
+                        Bot botComponet = nearEnemy.GetComponent<Bot>();
+                        if (botComponet != null)
+                        {
+                            botComponet.indicate.SetActive(true);
+                            isIndicate = true;
+                        }
+                    }
+                } 
             }
+            
         }
         else
         {
+            if (isIndicate && nearEnemy != null)
+            {
+                Bot botComponet = nearEnemy.GetComponent<Bot>();
+                if (botComponet != null)
+                {
+                    botComponet.indicate.SetActive(false);
+                    isIndicate = false;
+                }
+            }
             nearEnemy = null;
+          
         }
     }
 

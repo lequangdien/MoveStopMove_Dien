@@ -1,25 +1,31 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+
 [RequireComponent(typeof(Rigidbody),typeof(CapsuleCollider))]
 public class PlayerController : Character
 {
-  
+ 
     private HammerWeapon hammerWeapon;
     private PlayerController player;
+
+    public Vector3 movement;
 
     protected override void Start()
     {
         SpawnWeapon();
         currentWeaponType = Weapontype.hammer;
     }
+  
     public void OnInit()
     {
         if (weaponData ==null)
         {
             weaponData = DataManager.Instance.GetWeaponData(currentWeaponType);
         }
+         
     }
     private void FixedUpdate()
     {
@@ -34,6 +40,8 @@ public class PlayerController : Character
             isIdle = false;
             _animator.SetBool(ConstString.IS_IDLE,isIdle);
             _animator.SetBool(ConstString.IS_ATTACK, false);
+
+            
         }
 
         else
@@ -42,13 +50,59 @@ public class PlayerController : Character
            isIdle = true;
             _animator.SetBool(ConstString.IS_IDLE, isIdle);
         }
+        if (!IsWallInFront())
+        {
+            // Áp dụng di chuyển nếu không có tường
+            transform.Translate(movement);
+        }
 
+       
     }
+    bool IsWallInFront()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, movement.normalized, out hit, movement.magnitude))
+        {
+            
+            if (hit.collider.CompareTag("Ground"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    // public void CheckIndicate()
+    //{
+        
+    //    Bot botComponent=nearEnemy.GetComponent<Bot>();
+    //    if (nearEnemy != null)
+    //    {
+    //       if (botComponent != null)
+    //        {
+    //            botComponent.indicate.SetActive(true);
+    //        }
+    //    }
+        
+
+    //}
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag(ConstString.CHARACTER)) {
+    //        other.GetComponent<Bot>().indicate.SetActive(true);
+    //    }
+    //}
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag(ConstString.CHARACTER)) {
+    //        other.GetComponent<Bot>().indicate.SetActive(false);
+    //    }
+    //}
    
 
-   
-   
-  
+
+
+
+
 
 
 
