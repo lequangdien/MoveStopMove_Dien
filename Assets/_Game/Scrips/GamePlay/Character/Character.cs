@@ -1,0 +1,175 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Lean.Pool;
+
+
+
+
+public class Character : MonoBehaviour
+{
+    [Header("Move Infor")]
+    [SerializeField] public Rigidbody _rigibody;
+   
+    [SerializeField] public Animator _animator;
+    public bool isIdle;
+    public bool isAttack = false;
+    public bool isDead = false;
+
+    [Header("Collier Info")]
+    [SerializeField] public LayerMask botLayerMark;
+    [SerializeField] public float circleRadius;
+   
+
+    [Header("Weapon Info")]
+    [SerializeField] public Transform holdWeapon;
+    [SerializeField] public float _moveSpeed;
+    [SerializeField] public Weapontype currentWeaponType;
+    protected WeaponData weaponData;
+    protected Bullet bullet;
+    public Transform nearEnemy;
+    public Vector3 direc;
+    public string currentAnimName;
+    public Vector3 scale = new Vector3(1, 1, 1);
+    //  [SerializeField] public GameObject weapon;
+    //  [SerializeField] public GameObject bulletPrefab;
+    public Transform firePos;
+    public bool isIndicate=false;
+   
+    protected virtual void Start()
+    {
+      //  Instantiate(weapon, holdWeapon);
+
+    }
+    protected virtual void Update()
+    {
+       // Debug.Log(circleRadius);
+        if (isDead)
+        {
+            return;
+        }
+        CheckBoxBot();
+        if (isIdle && !isAttack && nearEnemy != null)
+        {
+            isAttack = true;
+            AttackBot();
+            _animator.SetBool(ConstString.IS_ATTACK, true);
+            Invoke(nameof(ResetAttack), 2f);
+          
+        }
+        
+    }
+    public void AttackBot()
+    {
+
+        direc = nearEnemy.position - transform.position;
+        Bullet spawnBullet = LeanPool.Spawn(weaponData.bullet,firePos.position,firePos.rotation);
+        spawnBullet.transform.rotation= Quaternion.Euler(-90,0,0);
+        //  GameObject spawnBullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+        spawnBullet.shooter= this;
+        // spawnBullet.ShooterName = gameObject;
+        spawnBullet.SeekDirec(direc);
+        holdWeapon.gameObject.SetActive(false);
+
+        
+    }
+    
+  
+    
+    public void OnDead()
+    {
+        isDead = true;
+        isIdle = false;
+        _animator.SetBool(ConstString.IS_DEAD, true);
+        int defaultLayer = LayerMask.NameToLayer(ConstString.DEFAULT_LAYER);
+        gameObject.layer = defaultLayer;
+        Debug.Log("trung dan");
+        Invoke(nameof(DestroyGameObject),0.5f);
+        
+        
+    }
+    public void DestroyGameObject() {
+            
+     //   Destroy(gameObject);
+        LeanPool.Despawn(gameObject);
+    }
+
+    private void CheckBoxBot()
+    {
+
+        Collider[] bot = Physics.OverlapSphere(transform.position, circleRadius, botLayerMark);
+        float miniumDistance = Mathf.Infinity;
+        bool isAnyBotInRange = false;
+        if (bot.Length >1)
+        {
+            foreach (Collider collider in bot)
+            {
+                if (collider.gameObject != this.gameObject)
+                {
+                    
+                    float distance = Vector3.Distance(transform.position, collider.transform.position);
+                    if (distance < miniumDistance)
+                    {
+                        miniumDistance = distance;
+                        nearEnemy = collider.transform;
+                        
+                    }
+                    isAnyBotInRange = true;
+                }
+
+            }
+            if (isAnyBotInRange)
+            {
+                if (!isIndicate)
+                {
+                    Bot botComponet = nearEnemy.GetComponent<Bot>();
+                    if (botComponet != null)
+                    {
+                        botComponet.indicate.SetActive(true);
+                        isIndicate = true;
+                    }
+                }
+                if (isIdle)
+                {
+                    transform.LookAt(nearEnemy);
+                   
+                } 
+            }
+            
+        }
+        else
+        {
+            if (isIndicate && nearEnemy != null)
+            {
+                Bot botComponet = nearEnemy.GetComponent<Bot>();
+                if (botComponet != null)
+                {
+                    botComponet.indicate.SetActive(false);
+                    isIndicate = false;
+                }
+            }
+            nearEnemy = null;
+          
+        }
+    }
+
+    public void ResetAttack()
+    {
+        isAttack = false;
+        holdWeapon.gameObject.SetActive(true);
+        _animator.SetBool(ConstString.IS_ATTACK, false);
+    }
+
+    
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, circleRadius);
+    }
+    public void SpawnWeapon()
+    {
+        Instantiate(weaponData.weapon,holdWeapon);
+    }
+}
+

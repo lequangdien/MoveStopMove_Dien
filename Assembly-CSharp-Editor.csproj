@@ -835,6 +835,10 @@
       <Project>{6F798285-0B5A-8F1E-B5ED-15115AE5B6E2}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="HUDIndicator.csproj">
+      <Project>{ED166B33-30F8-58F3-6B3B-A6A62853ABE7}</Project>
+      <Name>HUDIndicator</Name>
+    </ProjectReference>
     <ProjectReference Include="CW.Common.csproj">
       <Project>{013FE18D-14F7-8327-93C0-04E9E42DD225}</Project>
       <Name>CW.Common</Name>
