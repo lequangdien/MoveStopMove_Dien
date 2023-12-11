@@ -92,16 +92,22 @@ public class UiManager : Singleton<UiManager>
     }
     public void UnselectWeapon()
     {
-        LevelManager.Instance.player.currentWeaponType = DataManager.Instance.GetPlayerPref().weaponTypeData;
-        LevelManager.Instance.player.ChangeWeapon((Weapontype)index);
-        Debug.Log("da thay doi lan 2");
+        if (index < DataManager.Instance.listWeaponItemData.Count - 1)
+        {
+            LevelManager.Instance.player.ChangeWeapon((Weapontype)index--);
+            Debug.Log("da thay doi lan 2");
+            selectWeaponOj.SetActive(true);
+            unSelectWeaponOj.SetActive(false);
+        }
+       
     }
-
     public void SelectWeapon()
     {
-        LevelManager.Instance.player.ChangeWeapon((Weapontype)index);
-        DataManager.Instance.ChangeWeaponData(LevelManager.Instance.player.WeaponData.weaponType);
-        Debug.Log("da luu");
+            LevelManager.Instance.player.ChangeWeapon((Weapontype)index);
+            DataManager.Instance.ChangeWeaponData(LevelManager.Instance.player.WeaponData.weaponType);
+            Debug.Log("da luu");
+            selectWeaponOj.SetActive(false);
+            unSelectWeaponOj.SetActive(true);
     }
     
    
@@ -112,7 +118,6 @@ public class UiManager : Singleton<UiManager>
             index++;
             DestroyWeapon(weapon);
             LoadWeapon(index);
-            
         }
     }
     public void BackWeapon()

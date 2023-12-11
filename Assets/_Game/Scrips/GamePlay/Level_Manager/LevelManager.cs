@@ -12,7 +12,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public Weapontype newCurrentWeaponType;
     public FixedJoystick _joystick;
-    public PlayerController player;
+    public PlayerController player; 
     public  Bot bot;
     public List<Bot> botList = new List<Bot>();
     public int numberOfBots = 2;
@@ -25,7 +25,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         DataManager.Instance.Init();
         player.isDead= false;
-       
+        SpawnPlayer();
     }
   
     public void SpawnPlayer()
