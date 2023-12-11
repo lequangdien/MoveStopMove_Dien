@@ -38,17 +38,22 @@ public class Bot :Character
         {
             currentState.OnExecute(this);
         }
+        if (isDead)
+        {
+            LevelManager.Instance.BotDeath(this);
+            return;
+        }
 
     }
     public void OnInit()
     {
         if (weaponData == null)
         {
-
-            currentWeaponType = Weapontype.hammer;
+            currentWeaponType = Weapontype.Hammer;
             weaponData = DataManager.Instance.GetWeaponData(currentWeaponType);
         }
     }
+    
 
     public void SetDirection()
     {

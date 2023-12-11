@@ -31,15 +31,16 @@ public class Character : MonoBehaviour
     public Vector3 direc;
     public string currentAnimName;
     public Vector3 scale = new Vector3(1, 1, 1);
-    //  [SerializeField] public GameObject weapon;
-    //  [SerializeField] public GameObject bulletPrefab;
     public Transform firePos;
     public bool isIndicate=false;
+    public Weapon weaponSpawn;
    
+    public WeaponData WeaponData { get => weaponData; set => weaponData = value; }
+ //   public Weapon WeaponSpawn { get => weaponSpawn; set => weaponSpawn = value; }
+
     protected virtual void Start()
     {
-      //  Instantiate(weapon, holdWeapon);
-
+       // weaponSpawn = Instantiate(weaponData.weapon, holdWeapon);
     }
     protected virtual void Update()
     {
@@ -59,6 +60,7 @@ public class Character : MonoBehaviour
         }
         
     }
+   
     public void AttackBot()
     {
 
@@ -169,7 +171,7 @@ public class Character : MonoBehaviour
     }
     public void SpawnWeapon()
     {
-        Instantiate(weaponData.weapon,holdWeapon);
+        weaponSpawn=Instantiate(weaponData.weapon,holdWeapon);
     }
 }
 

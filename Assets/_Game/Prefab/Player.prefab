@@ -208,7 +208,7 @@ MonoBehaviour:
   circleRadius: 6.01
   holdWeapon: {fileID: 3082645815734889187}
   _moveSpeed: 6.5
-  currentWeaponType: 2
+  currentWeaponType: 0
   nearEnemy: {fileID: 0}
   direc: {x: 0, y: 0, z: 0}
   currentAnimName: 

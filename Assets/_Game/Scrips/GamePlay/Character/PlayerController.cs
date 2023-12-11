@@ -10,30 +10,52 @@ public class PlayerController : Character
     private FixedJoystick _joystick;
     private HammerWeapon hammerWeapon;
     private PlayerController player;
-
+   
     public Vector3 movement;
 
 
     protected override void Start()
     {
-        _joystick = LevelManager.Instance._joystick;
-        currentWeaponType = Weapontype.hammer;
+       _joystick = LevelManager.Instance._joystick;
+        currentWeaponType = Weapontype.Hammer;
         SpawnWeapon();
+    
         base.Start();
     }
   
+    
+    private void  FixedUpdate()
+    {
+        if (isDead)
+        {
+            return;
+        }
+        OnMove();
+        //if (isDead)
+        //{
+        //    LevelManager.Instance.PlayerIsDead();
+        //}
+
+    }
+   
     public void OnInit()
     {
-        if (weaponData ==null)
-        {
+        if (weaponData == null)
+        {        
+            currentWeaponType = DataManager.Instance.GetPlayerPref().weaponTypeData;
             weaponData = DataManager.Instance.GetWeaponData(currentWeaponType);
         }
-         
+
     }
-    private void FixedUpdate()
+
+    public void ChangeWeapon(Weapontype weapontype)
     {
-        OnMove();
+
+        weaponData = DataManager.Instance.listWeaponItemData[(int)weapontype];
+        Destroy(this.weaponSpawn.gameObject);
+        weaponSpawn = Instantiate(weaponData.weapon, holdWeapon);
     }
+
     public void OnMove()
     {
         _rigibody.velocity = new Vector3(_joystick.Horizontal * _moveSpeed, _rigibody.velocity.y, _joystick.Vertical * _moveSpeed);
@@ -76,40 +98,4 @@ public class PlayerController : Character
         }
         return false;
     }
-    // public void CheckIndicate()
-    //{
-        
-    //    Bot botComponent=nearEnemy.GetComponent<Bot>();
-    //    if (nearEnemy != null)
-    //    {
-    //       if (botComponent != null)
-    //        {
-    //            botComponent.indicate.SetActive(true);
-    //        }
-    //    }
-        
-
-    //}
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag(ConstString.CHARACTER)) {
-    //        other.GetComponent<Bot>().indicate.SetActive(true);
-    //    }
-    //}
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag(ConstString.CHARACTER)) {
-    //        other.GetComponent<Bot>().indicate.SetActive(false);
-    //    }
-    //}
-   
-
-
-
-
-
-
-
-
-
 }

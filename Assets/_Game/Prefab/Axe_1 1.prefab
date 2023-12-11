@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5214798476202892751}
   - component: {fileID: -1879629000731042668}
   - component: {fileID: 7662137395324440033}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Axe_1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   rb: {fileID: -1879629000731042668}
-  ShooterName: 
+  shooter: {fileID: 0}
   time: 1
 --- !u!54 &-1879629000731042668
 Rigidbody:

@@ -13,6 +13,10 @@ PrefabInstance:
       value: Hammer Variant 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 90389cac50942cb4ca38583e6531094a, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 90389cac50942cb4ca38583e6531094a, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -145,5 +149,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   rb: {fileID: -5505170172316355257}
-  ShooterName: 
+  shooter: {fileID: 0}
   time: 1

@@ -42,11 +42,9 @@ public class Bullet : MonoBehaviour
             {  
                 LeanPool.Despawn(gameObject);
                 character.OnDead();
-                
                 StopAllCoroutines();
-
                 shooter.gameObject.transform.localScale += new Vector3(character.transform.localScale.x * 0.04f, character.transform.localScale.y * 0.04f, character.transform.localScale.z * 0.04f);
-
+              
             }
         }
 

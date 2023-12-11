@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
     public enum Weapontype
     {
-        hammer,
-        knife,
-        Axe,
+        Hammer=0,
+        Axe=1,
     }
     [Serializable]
     public class WeaponData

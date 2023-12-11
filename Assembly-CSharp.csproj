@@ -76,6 +76,7 @@
     <Compile Include="Assets\PBS Materials Variety Pack\zzz\MaterialRandomizer.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\Character\Character.cs" />
     <Compile Include="Assets\_Game\Scrips\Data\Weapon\HammerBullet\HammerWeapon.cs" />
+    <Compile Include="Assets\_Game\Login\EditorButton\EditorButtonAttribute.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\NavMesh\NavMesh2.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\_Game\Scrips\Data\Weapon\AxeBullet\AxeBullet.cs" />
@@ -84,11 +85,14 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
+    <Compile Include="Assets\_Game\Login\Player Prefs Editor\PlayerPrefsUtility.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\Other\CameraFollower.cs" />
     <Compile Include="Assets\PBS Materials Variety Pack\zzz\MaterialRandomizerScript.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\ISate\PlatrolState.cs" />
+    <Compile Include="Assets\_Game\Scrips\GamePlay\Level_Manager\GameManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+    <Compile Include="Assets\_Game\Scrips\GamePlay\Other\ShopWeapon.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\_Game\Scrips\Data\WeaponData\WeaponDataSO.cs" />
@@ -125,6 +129,8 @@
     <Compile Include="Assets\_Game\Scrips\GamePlay\Character\PlayerController.cs" />
     <Compile Include="Assets\_Game\Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets\_Game\Login\Player Prefs Editor\SimpleEncryption.cs" />
+    <Compile Include="Assets\_Game\Scrips\Data\DynamicData\UseData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
