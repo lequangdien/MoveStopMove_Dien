@@ -27,7 +27,8 @@ public class LevelManager : Singleton<LevelManager>
         player.isDead= false;
         SpawnPlayer();
     }
-  
+   
+
     public void SpawnPlayer()
     {
         player = LeanPool.Spawn(player,spawnPosition);

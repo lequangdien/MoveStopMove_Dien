@@ -134,10 +134,10 @@ public class Character : MonoBehaviour
                 if (isIdle)
                 {
                     transform.LookAt(nearEnemy);
-                   
-                } 
+
+                }
             }
-            
+
         }
         else
         {

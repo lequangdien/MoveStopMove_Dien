@@ -15,9 +15,6 @@ public class Bullet : MonoBehaviour
     public Character shooter;
     public float time = 1f;
 
-
-
-
     public void SeekDirec(Vector3 direction)
     {
         rb.velocity = direction.normalized * speed;
@@ -33,7 +30,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(ConstString.CHARACTER))
+        if (other.CompareTag(ConstString.PLAYER) || other.CompareTag(ConstString.BOT))
         {
             Character character = other.GetComponent<Character>();
 
@@ -43,7 +40,7 @@ public class Bullet : MonoBehaviour
                 LeanPool.Despawn(gameObject);
                 character.OnDead();
                 StopAllCoroutines();
-                shooter.gameObject.transform.localScale += new Vector3(character.transform.localScale.x * 0.04f, character.transform.localScale.y * 0.04f, character.transform.localScale.z * 0.04f);
+                shooter.gameObject.transform.localScale += new Vector3(character.transform.localScale.x * 0.02f, character.transform.localScale.y * 0.02f, character.transform.localScale.z * 0.02f);
               
             }
         }

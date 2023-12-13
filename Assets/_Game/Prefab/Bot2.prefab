@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2799507285434734621}
   m_Layer: 6
   m_Name: Bot2
-  m_TagString: Character
+  m_TagString: Bot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +66,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &6223142089177559421
 MonoBehaviour:
@@ -98,6 +98,7 @@ MonoBehaviour:
   scale: {x: 1, y: 1, z: 1}
   firePos: {fileID: 7690006678560693024}
   isIndicate: 0
+  weaponSpawn: {fileID: 0}
   newPos: {x: 0, y: 0, z: 0}
   wanderRadius: 6
   agent: {fileID: 3540386919387684391}
@@ -145,9 +146,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5949764
-  m_Height: 3.0041904
+  m_Height: 2.521007
   m_Direction: 1
-  m_Center: {x: 0, y: 1.0020952, z: -0.094976425}
+  m_Center: {x: 0, y: 1.2436869, z: -0.094976425}
 --- !u!114 &2799507285434734621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 3007461850392752582}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7048132, y: -0, z: -0, w: 0.709393}
-  m_LocalPosition: {x: 0, y: 0.14, z: 0}
+  m_LocalPosition: {x: 0, y: 0.37, z: 0}
   m_LocalScale: {x: 4.5355, y: 4.5355, z: 4.5355}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -486,7 +487,6 @@ GameObject:
   - component: {fileID: 7682623819466891800}
   - component: {fileID: 5582641274062814907}
   - component: {fileID: 4267724029982470841}
-  - component: {fileID: 6326829661539995946}
   - component: {fileID: 697218058576018071}
   m_Layer: 6
   m_Name: Image
@@ -553,33 +553,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!54 &6326829661539995946
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6735357139945625594}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &697218058576018071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,6 +718,18 @@ PrefabInstance:
     - target: {fileID: -9056616654929648570, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8699012472884554006, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0.40691054
+      objectReference: {fileID: 0}
+    - target: {fileID: -8699012472884554006, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: 0.04009676
+      objectReference: {fileID: 0}
+    - target: {fileID: -8699012472884554006, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 1.1223841
       objectReference: {fileID: 0}
     - target: {fileID: -8699012472884554006, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -23,14 +23,13 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] public GameState gamestate = GameState.UNPLAY;
     [SerializeField] public Transform point;
     [SerializeField] public Button selectWeapon;
-    [SerializeField] public Button unSelectWeapon;
     [SerializeField] public Button exit;
     [SerializeField] public Button nextShopWeapon;
     [SerializeField] public Button backShopWeapon;
     [SerializeField] public GameObject selectWeaponOj;
     [SerializeField] public GameObject unSelectWeaponOj;
-    //public Character player;
-    //private WeaponDataSO weaponData;
+  
+    private Weapontype currentWeaponType;
     private Weapon weapon;
     private int index;
     private void Start()
@@ -41,7 +40,6 @@ public class UiManager : Singleton<UiManager>
         backToMainMenu.onClick.AddListener(UiYouDead);
         selectWeapon.onClick.AddListener(SelectWeapon);
         exit.onClick.AddListener(Exit);
-        unSelectWeapon.onClick.AddListener(UnselectWeapon);
         nextShopWeapon.onClick.AddListener(NextWeapon);
         backShopWeapon.onClick.AddListener(BackWeapon);
         
@@ -55,6 +53,7 @@ public class UiManager : Singleton<UiManager>
             uiPlayerIsDead.SetActive(true);
             _joystick.SetActive(false);
         }
+        
         
     }
    
@@ -85,29 +84,18 @@ public class UiManager : Singleton<UiManager>
     {
         weapon = Instantiate(DataManager.Instance.WeaponDataSO.weaponListData[index].weapon, point.transform);
         weapon.gameObject.transform.localScale += new Vector3(weapon.transform.localScale.x*4,weapon.transform.localScale.y*4,weapon.transform.localScale.z*4);
+        //weapon.gameObject.transform.rotation= Quaternion.Euler(0,90,0);
     }
     public void DestroyWeapon(Weapon weapon)
     {
         Destroy(weapon.gameObject);
-    }
-    public void UnselectWeapon()
-    {
-        if (index < DataManager.Instance.listWeaponItemData.Count - 1)
-        {
-            LevelManager.Instance.player.ChangeWeapon((Weapontype)index--);
-            Debug.Log("da thay doi lan 2");
-            selectWeaponOj.SetActive(true);
-            unSelectWeaponOj.SetActive(false);
-        }
-       
     }
     public void SelectWeapon()
     {
             LevelManager.Instance.player.ChangeWeapon((Weapontype)index);
             DataManager.Instance.ChangeWeaponData(LevelManager.Instance.player.WeaponData.weaponType);
             Debug.Log("da luu");
-            selectWeaponOj.SetActive(false);
-            unSelectWeaponOj.SetActive(true);
+            TurnEquipped();
     }
     
    
@@ -118,6 +106,15 @@ public class UiManager : Singleton<UiManager>
             index++;
             DestroyWeapon(weapon);
             LoadWeapon(index);
+           
+            if (index==(int)LevelManager.Instance.player.WeaponData.weaponType)
+            {
+                TurnEquipped();
+            }
+            else
+            {
+                TurnSelect();
+            }
         }
     }
     public void BackWeapon()
@@ -127,6 +124,15 @@ public class UiManager : Singleton<UiManager>
             index--;
             DestroyWeapon(weapon);
             LoadWeapon(index);
+            
+            if (index==(int)LevelManager.Instance.player.WeaponData.weaponType)
+            {
+                TurnEquipped();
+            }
+            else
+            {
+                TurnSelect();
+            }
         }
     }
     public void UiYouDead()
@@ -134,6 +140,16 @@ public class UiManager : Singleton<UiManager>
         LevelManager.Instance.player.isDead=false;
         uiPlayerIsDead.SetActive(false);
         SceneManager.LoadScene(ConstString.SCENE);
+    }
+    public  void TurnSelect()
+    {
+        selectWeaponOj.SetActive(true);
+        unSelectWeaponOj.SetActive(false);
+    }
+    public void TurnEquipped()
+    {
+        selectWeaponOj.SetActive(false);
+        unSelectWeaponOj.SetActive(true);
     }
     public enum GameState
     {

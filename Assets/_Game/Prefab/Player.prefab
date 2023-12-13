@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 1961375725733791620}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Character
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,9 +205,9 @@ MonoBehaviour:
   botLayerMark:
     serializedVersion: 2
     m_Bits: 320
-  circleRadius: 6.01
+  circleRadius: 5.41
   holdWeapon: {fileID: 3082645815734889187}
-  _moveSpeed: 6.5
+  _moveSpeed: 7
   currentWeaponType: 0
   nearEnemy: {fileID: 0}
   direc: {x: 0, y: 0, z: 0}
@@ -215,6 +215,7 @@ MonoBehaviour:
   scale: {x: 1, y: 1, z: 1}
   firePos: {fileID: 6230921159689508198}
   isIndicate: 0
+  weaponSpawn: {fileID: 0}
   movement: {x: 0, y: 0, z: 0}
 --- !u!136 &1961375725733791620
 CapsuleCollider:

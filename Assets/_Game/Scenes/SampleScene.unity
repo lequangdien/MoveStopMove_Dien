@@ -1153,7 +1153,6 @@ MonoBehaviour:
   gamestate: 1
   point: {fileID: 2050554071}
   selectWeapon: {fileID: 498646874}
-  unSelectWeapon: {fileID: 210463227}
   exit: {fileID: 494405851}
   nextShopWeapon: {fileID: 636549837}
   backShopWeapon: {fileID: 434483415}
@@ -2925,7 +2924,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "B\u1ECF ch\u1ECDn"
+  m_text: Equipped
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3479,7 +3478,7 @@ MonoBehaviour:
   player: {fileID: 4213792552317232228, guid: d8d59197d4fa0ae498902486a7ceed0f, type: 3}
   bot: {fileID: 6223142089177559421, guid: 6d5ec40706d8046438dfe24fcd8d91df, type: 3}
   botList: []
-  numberOfBots: 2
+  numberOfBots: 3
   spawnPosition: {fileID: 1819592989}
   maxRadius: 80
   endPoint: 0
@@ -4067,7 +4066,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ch\u1ECDn"
+  m_text: Select
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

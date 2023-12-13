@@ -27,7 +27,7 @@ public class Bot :Character
         OnInit();
         SpawnWeapon();
      
-
+       
     }
    
     protected override void Update()
@@ -53,7 +53,7 @@ public class Bot :Character
             weaponData = DataManager.Instance.GetWeaponData(currentWeaponType);
         }
     }
-    
+   
 
     public void SetDirection()
     {
