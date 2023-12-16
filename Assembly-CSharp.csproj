@@ -122,6 +122,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\Level_Manager\UiManager.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\Character\Bot.cs" />
+    <Compile Include="Assets\_Game\Scrips\GamePlay\Other\ShopSkin.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\Level_Manager\LevelManager.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\Other\ConstString.cs" />
     <Compile Include="Assets\_Game\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />

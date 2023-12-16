@@ -38,18 +38,11 @@ public class Character : MonoBehaviour
     public WeaponData WeaponData { get => weaponData; set => weaponData = value; }
  //   public Weapon WeaponSpawn { get => weaponSpawn; set => weaponSpawn = value; }
 
-    protected virtual void Start()
-    {
-       // weaponSpawn = Instantiate(weaponData.weapon, holdWeapon);
-    }
+   
     protected virtual void Update()
     {
-       // Debug.Log(circleRadius);
-        if (isDead)
-        {
-            return;
-        }
         CheckBoxBot();
+        
         if (isIdle && !isAttack && nearEnemy != null)
         {
             isAttack = true;
@@ -58,7 +51,6 @@ public class Character : MonoBehaviour
             Invoke(nameof(ResetAttack), 2f);
           
         }
-        
     }
    
     public void AttackBot()
@@ -67,13 +59,9 @@ public class Character : MonoBehaviour
         direc = nearEnemy.position - transform.position;
         Bullet spawnBullet = LeanPool.Spawn(weaponData.bullet,firePos.position,firePos.rotation);
         spawnBullet.transform.rotation= Quaternion.Euler(-90,0,0);
-        //  GameObject spawnBullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);
         spawnBullet.shooter= this;
-        // spawnBullet.ShooterName = gameObject;
         spawnBullet.SeekDirec(direc);
         holdWeapon.gameObject.SetActive(false);
-
-        
     }
     
   
@@ -101,57 +89,62 @@ public class Character : MonoBehaviour
 
         Collider[] bot = Physics.OverlapSphere(transform.position, circleRadius, botLayerMark);
         float miniumDistance = Mathf.Infinity;
-        bool isAnyBotInRange = false;
-        if (bot.Length >1)
+        //   bool isAnyBotInRange = false;
+        if (bot.Length > 1)
         {
             foreach (Collider collider in bot)
             {
                 if (collider.gameObject != this.gameObject)
                 {
-                    
+
                     float distance = Vector3.Distance(transform.position, collider.transform.position);
                     if (distance < miniumDistance)
                     {
                         miniumDistance = distance;
                         nearEnemy = collider.transform;
-                        
+
                     }
-                    isAnyBotInRange = true;
+                    //    isAnyBotInRange = true;
                 }
 
             }
-            if (isAnyBotInRange)
-            {
-                if (!isIndicate)
-                {
-                    Bot botComponet = nearEnemy.GetComponent<Bot>();
-                    if (botComponet != null)
-                    {
-                        botComponet.indicate.SetActive(true);
-                        isIndicate = true;
-                    }
-                }
-                if (isIdle)
-                {
-                    transform.LookAt(nearEnemy);
+        }
+        //if (isAnyBotInRange)
+        //{
+        //    if (!isIndicate)
+        //    {
+        //        Bot botComponet = nearEnemy.GetComponent<Bot>();
+        //        if (botComponet != null)
+        //        {
+        //            botComponet.indicate.SetActive(true);
+        //            isIndicate = true;
+        //        }
+        //    }
+        //if (isIdle)
+        //{
+        //    transform.LookAt(nearEnemy);
 
-                }
-            }
+        //}
+        //  }
+
+        if (isIdle)
+        {
+            transform.LookAt(nearEnemy);
 
         }
         else
         {
-            if (isIndicate && nearEnemy != null)
-            {
-                Bot botComponet = nearEnemy.GetComponent<Bot>();
-                if (botComponet != null)
-                {
-                    botComponet.indicate.SetActive(false);
-                    isIndicate = false;
-                }
-            }
+            //if (isIndicate && nearEnemy != null)
+            //{
+            //    Bot botComponet = nearEnemy.GetComponent<Bot>();
+            //    if (botComponet != null)
+            //    {
+            //        botComponet.indicate.SetActive(false);
+            //        isIndicate = false;
+            //    }
+            //}
             nearEnemy = null;
-          
+
         }
     }
 

@@ -19,10 +19,9 @@ public class Bot :Character
 
     public bool isTarget => Vector3.Distance(transform.position,newPos)<0.1f;
     // [SerializeField] public Animator _animatorBot;
-    protected override void Start()
+    public void Start()
     {
         ChangeState(new PlatrolState());
-        base.Start();
 
         OnInit();
         SpawnWeapon();

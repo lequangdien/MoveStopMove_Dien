@@ -14,13 +14,11 @@ public class PlayerController : Character
     public Vector3 movement;
 
 
-    protected override void Start()
+    public void Start()
     {
        _joystick = LevelManager.Instance._joystick;
         currentWeaponType = Weapontype.Hammer;
         SpawnWeapon();
-    
-        base.Start();
     }
   
     

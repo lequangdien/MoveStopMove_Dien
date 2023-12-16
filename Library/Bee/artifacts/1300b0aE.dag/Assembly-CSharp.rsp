@@ -433,6 +433,7 @@
 "Assets/_Game/Scrips/GamePlay/NavMesh/NavMeshUtil.cs"
 "Assets/_Game/Scrips/GamePlay/Other/CameraFollower.cs"
 "Assets/_Game/Scrips/GamePlay/Other/ConstString.cs"
+"Assets/_Game/Scrips/GamePlay/Other/ShopSkin.cs"
 "Assets/_Game/Scrips/GamePlay/Other/ShopWeapon.cs"
 "Assets/_Game/Scrips/GamePlay/Other/Singleton.cs"
 "Assets/_Game/Scrips/GamePlay/Other/UiLookAtCamera.cs"
