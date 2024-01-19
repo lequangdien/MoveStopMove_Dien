@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
@@ -13,7 +11,7 @@ public class DataManager : Singleton<DataManager>
     {
         listWeaponItemData = WeaponDataSO.weaponListData;
         //PlayerPrefs.DeleteKey(ConstString.PLAYERPREFKEY);
-      
+
     }
     public void Init()
     {
@@ -25,23 +23,23 @@ public class DataManager : Singleton<DataManager>
         SavePlayePref(useData);
         Debug.Log("da chay vao day");
     }
-  
+
     public void SavePlayePref(UseData useData)
     {
-        string useDataString=JsonUtility.ToJson(useData);
-        PlayerPrefs.SetString(ConstString.PLAYERPREFKEY,useDataString);
+        string useDataString = JsonUtility.ToJson(useData);
+        PlayerPrefs.SetString(ConstString.PLAYERPREFKEY, useDataString);
     }
     public UseData GetPlayerPref()
     {
-        string UseDataString=PlayerPrefs.GetString(ConstString.PLAYERPREFKEY);
+        string UseDataString = PlayerPrefs.GetString(ConstString.PLAYERPREFKEY);
         UseData useData = JsonUtility.FromJson<UseData>(UseDataString);
         return useData;
     }
-    
+
     public WeaponData GetWeaponData(Weapontype weapontype)
     {
         List<WeaponData> weapons = WeaponDataSO.weaponListData;
-        for (int i=0;i<weapons.Count;i++)
+        for (int i = 0; i < weapons.Count; i++)
         {
             if (weapontype == weapons[i].weaponType)
             {

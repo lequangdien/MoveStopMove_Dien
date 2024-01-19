@@ -6,6 +6,7 @@ using UnityEngine;
     {
         Hammer=0,
         Axe=1,
+        Boomerang=2,
     }
     [Serializable]
     public class WeaponData

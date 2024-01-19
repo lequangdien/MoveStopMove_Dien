@@ -106,10 +106,12 @@
     <Compile Include="Assets\_Game\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
+    <Compile Include="Assets\_Game\Scrips\Data\Weapon\BoomerangBullet\BoomerangWeapon.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\Character\Bullet.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\HUD Indicator\Demo\Scripts\PrefabSpawner.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
+    <Compile Include="Assets\_Game\Scrips\Data\Weapon\BoomerangBullet\BoomerangBullet.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\ISate\IState.cs" />
     <Compile Include="Assets\_Game\Scrips\Data\Weapon\HammerBullet\HammerBullet.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />

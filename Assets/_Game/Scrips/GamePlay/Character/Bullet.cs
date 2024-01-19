@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.TextCore.Text;
 using Lean.Pool;
-using System;
+using System.Collections;
+using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
@@ -14,6 +11,7 @@ public class Bullet : MonoBehaviour
 
     public Character shooter;
     public float time = 1f;
+    public GameObject effects;
 
     public void SeekDirec(Vector3 direction)
     {
@@ -33,15 +31,14 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag(ConstString.PLAYER) || other.CompareTag(ConstString.BOT))
         {
             Character character = other.GetComponent<Character>();
-
-            
             if (character != shooter)
-            {  
+            {
+                Instantiate(effects, transform.position, transform.rotation);
                 LeanPool.Despawn(gameObject);
                 character.OnDead();
                 StopAllCoroutines();
                 shooter.gameObject.transform.localScale += new Vector3(character.transform.localScale.x * 0.02f, character.transform.localScale.y * 0.02f, character.transform.localScale.z * 0.02f);
-              
+
             }
         }
 

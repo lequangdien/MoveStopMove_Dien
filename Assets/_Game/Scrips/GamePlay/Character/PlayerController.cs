@@ -1,28 +1,24 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UIElements;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody),typeof(CapsuleCollider))]
+[RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerController : Character
 {
     private FixedJoystick _joystick;
     private HammerWeapon hammerWeapon;
     private PlayerController player;
-   
+
     public Vector3 movement;
 
 
     public void Start()
     {
-       _joystick = LevelManager.Instance._joystick;
+        _joystick = LevelManager.Instance._joystick;
         currentWeaponType = Weapontype.Hammer;
         SpawnWeapon();
     }
-  
-    
-    private void  FixedUpdate()
+
+
+    private void FixedUpdate()
     {
         if (isDead)
         {
@@ -35,11 +31,11 @@ public class PlayerController : Character
         //}
 
     }
-   
+
     public void OnInit()
     {
         if (weaponData == null)
-        {        
+        {
             currentWeaponType = DataManager.Instance.GetPlayerPref().weaponTypeData;
             weaponData = DataManager.Instance.GetWeaponData(currentWeaponType);
         }
@@ -88,7 +84,7 @@ public class PlayerController : Character
         RaycastHit hit;
         if (Physics.Raycast(transform.position, movement.normalized, out hit, movement.magnitude))
         {
-            
+
             if (hit.collider.CompareTag("Ground"))
             {
                 return true;

@@ -64,9 +64,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0d9bd508cd5773743a57f3c073b8ea70, type: 2}
-  - {fileID: 2100000, guid: 0d9bd508cd5773743a57f3c073b8ea70, type: 2}
-  - {fileID: 2100000, guid: 0d9bd508cd5773743a57f3c073b8ea70, type: 2}
+  - {fileID: 2100000, guid: 1feba3ced20d8d94288a6e4888438d5f, type: 2}
+  - {fileID: 2100000, guid: 1feba3ced20d8d94288a6e4888438d5f, type: 2}
+  - {fileID: 2100000, guid: 1feba3ced20d8d94288a6e4888438d5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
   rb: {fileID: -1879629000731042668}
   shooter: {fileID: 0}
   time: 1
+  effects: {fileID: 9131834624412458753, guid: 29455e62f00e6094192fc2366478dafb, type: 3}
 --- !u!54 &-1879629000731042668
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Bot :Character
+public class Bot : Character
 {
 
-    
+
     private IState currentState;
     public Vector3 newPos;
-    public float wanderRadius=6f;
+    public float wanderRadius = 6f;
     public NavMeshAgent agent;
     public GameObject indicate;
     public TextMeshProUGUI botText;
-   
+    public Bot bot;
 
-    public bool isTarget => Vector3.Distance(transform.position,newPos)<0.1f;
+
+    public bool isTarget => Vector3.Distance(transform.position, newPos) < 0.1f;
     // [SerializeField] public Animator _animatorBot;
     public void Start()
     {
@@ -25,15 +23,15 @@ public class Bot :Character
 
         OnInit();
         SpawnWeapon();
-     
-       
+
+
     }
-   
+
     protected override void Update()
     {
-       
+
         base.Update();
-        if (currentState !=null && !isDead)
+        if (currentState != null && !isDead)
         {
             currentState.OnExecute(this);
         }
@@ -52,7 +50,7 @@ public class Bot :Character
             weaponData = DataManager.Instance.GetWeaponData(currentWeaponType);
         }
     }
-   
+
 
     public void SetDirection()
     {
@@ -67,22 +65,22 @@ public class Bot :Character
         randDirection += origin;
 
         NavMeshHit navHit;
-        
+
         NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
 
         return navHit.position;
     }
     public void ChangeState(IState newState)
     {
-        if (currentState !=null)
+        if (currentState != null)
         {
             currentState.OnEnter(this);
         }
-        currentState= newState;
-        if (currentState !=null )
+        currentState = newState;
+        if (currentState != null)
         {
             currentState.OnEnter(this);
-          
+
         }
     }
 }
