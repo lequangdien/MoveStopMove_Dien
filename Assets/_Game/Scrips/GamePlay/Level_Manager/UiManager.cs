@@ -24,6 +24,8 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] public GameObject unSelectWeaponOj;
     [SerializeField] public Button weaponShopSkin;
     [SerializeField] public GameObject weaponSkinOj;
+    [SerializeField] public GameObject settingGameObject;
+    [SerializeField] public Button settingButton;
 
     private Weapon weapon;
     private int index;
@@ -38,6 +40,7 @@ public class UiManager : Singleton<UiManager>
         nextShopWeapon.onClick.AddListener(NextWeapon);
         backShopWeapon.onClick.AddListener(BackWeapon);
         weaponShopSkin.onClick.AddListener(ShopSkin.Instance.shopSKin);
+        settingButton.onClick.AddListener(SettingUI);
     }
     private void Update()
     {
@@ -57,6 +60,7 @@ public class UiManager : Singleton<UiManager>
         gamestate = GameState.PLAY;
         mainMenu.SetActive(false);
         _joystick.SetActive(true);
+        settingGameObject.SetActive(true);
         Time.timeScale = 1f;
     }
     public void Exit()
@@ -64,6 +68,10 @@ public class UiManager : Singleton<UiManager>
         mainMenu.SetActive(true);
         weaponShopGameObj.SetActive(false);
         DestroyWeapon(weapon);
+
+    }
+    public void SettingUI()
+    {
 
     }
 

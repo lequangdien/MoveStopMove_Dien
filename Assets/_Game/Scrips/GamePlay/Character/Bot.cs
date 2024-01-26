@@ -35,6 +35,7 @@ public class Bot : Character
         {
             currentState.OnExecute(this);
         }
+
         if (isDead)
         {
             LevelManager.Instance.BotDeath(this);

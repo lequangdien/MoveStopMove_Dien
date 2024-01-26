@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4213991879280248904}
   - component: {fileID: 4957092763641828723}
   - component: {fileID: -2373109674348975044}
-  - component: {fileID: 5713328652025164224}
   - component: {fileID: 7072646524252245158}
+  - component: {fileID: 317295228061403019}
   m_Layer: 0
   m_Name: boomerang 1
   m_TagString: Untagged
@@ -29,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3350518056430279330}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5226692, y: -0.5460794, z: 0.4526844, w: 0.47296}
-  m_LocalPosition: {x: 0.26636526, y: 1.5226948, z: 0.458}
+  m_LocalRotation: {x: 0.48193017, y: -0.49757618, z: 0.49449676, w: 0.52500886}
+  m_LocalPosition: {x: 0.2608512, y: 1.4770808, z: 0.4556641}
   m_LocalScale: {x: 10.54152, y: 10.54152, z: 10.54152}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 81.419, y: -163.114, z: -72.934}
+  m_LocalEulerAnglesHint: {x: 86.5, y: -48.663, z: 40.485}
 --- !u!33 &4213991879280248904
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -99,37 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  rb: {fileID: 5713328652025164224}
+  rb: {fileID: 317295228061403019}
   shooter: {fileID: 0}
   time: 1
   effects: {fileID: 9131834624412458753, guid: 29455e62f00e6094192fc2366478dafb, type: 3}
---- !u!54 &5713328652025164224
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3350518056430279330}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &7072646524252245158
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -151,3 +124,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.047150616, y: 0.095651716, z: 0.007876454}
   m_Center: {x: 0.023739878, y: 0.0000000021667286, z: -0.0000000010612549}
+--- !u!54 &317295228061403019
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3350518056430279330}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

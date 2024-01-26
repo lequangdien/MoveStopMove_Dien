@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(ConstString.PLAYER) || other.CompareTag(ConstString.BOT))
         {

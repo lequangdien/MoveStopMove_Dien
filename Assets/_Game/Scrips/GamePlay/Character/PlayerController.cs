@@ -20,16 +20,11 @@ public class PlayerController : Character
 
     private void FixedUpdate()
     {
+        OnMove();
         if (isDead)
         {
             return;
         }
-        OnMove();
-        //if (isDead)
-        //{
-        //    LevelManager.Instance.PlayerIsDead();
-        //}
-
     }
 
     public void OnInit()

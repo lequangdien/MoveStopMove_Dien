@@ -39,13 +39,13 @@ public class Character : MonoBehaviour
 
     protected virtual void Update()
     {
+        nearEnemy = null;
         CheckBoxBot();
-
         if (isIdle && !isAttack && nearEnemy != null)
         {
             isAttack = true;
-            AttackBot();
             _animator.SetBool(ConstString.IS_ATTACK, true);
+            AttackBot();
             Invoke(nameof(ResetAttack), 2f);
 
         }
@@ -53,7 +53,6 @@ public class Character : MonoBehaviour
 
     public void AttackBot()
     {
-
         direc = nearEnemy.position - transform.position;
         Bullet spawnBullet = LeanPool.Spawn(weaponData.bullet, firePos.position, firePos.rotation);
         spawnBullet.transform.rotation = Quaternion.Euler(-90, 0, 0);
@@ -104,15 +103,15 @@ public class Character : MonoBehaviour
                     }
                 }
             }
-            if (!isIndicate)
-            {
-                Bot botComponet = nearEnemy.GetComponent<Bot>();
-                if (botComponet != null)
-                {
-                    botComponet.indicate.SetActive(true);
-                    isIndicate = true;
-                }
-            }
+            //if (!isIndicate)
+            //{
+            //    Bot botComponet = nearEnemy.GetComponent<Bot>();
+            //    if (botComponet != null)
+            //    {
+            //        botComponet.indicate.SetActive(true);
+            //        isIndicate = true;
+            //    }
+            //}
         }
         if (isIdle)
         {
@@ -121,16 +120,16 @@ public class Character : MonoBehaviour
         }
         else
         {
-            if (isIndicate)
-            {
-                Bot botComponet = nearEnemy.GetComponent<Bot>();
-                if (botComponet != null)
-                {
-                    botComponet.indicate.SetActive(false);
-                    isIndicate = false;
-                }
+            //if (isIndicate)
+            //{
+            //    Bot botComponet = nearEnemy.GetComponent<Bot>();
+            //    if (botComponet != null)
+            //    {
+            //        botComponet.indicate.SetActive(false);
+            //        isIndicate = false;
+            //    }
 
-            }
+            //}
             nearEnemy = null;
 
         }
