@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
 {
-
     public Weapontype newCurrentWeaponType;
     public FixedJoystick _joystick;
     public PlayerController player;
@@ -15,6 +14,7 @@ public class LevelManager : Singleton<LevelManager>
     public float maxRadius = 50;
     protected WeaponData weaponData;
     public int endPoint = 0;
+
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class LevelManager : Singleton<LevelManager>
     public void SpawnPlayer()
     {
         player = LeanPool.Spawn(player, spawnPosition);
-
+ 
         if (player.weaponSpawn == null)
         {
             player.OnInit();
@@ -47,8 +47,6 @@ public class LevelManager : Singleton<LevelManager>
         for (int i = 0; i < numberOfBots; i++)
         {
             Vector3 randomPositison = NavMeshUtil.GetRandomPoint(spawnPosition.position, maxRadius);
-
-            //  Bot newbot = Instantiate(bot,randomPositison,Quaternion.identity);
             Bot newbot = LeanPool.Spawn(bot, randomPositison, Quaternion.identity);
             botList.Add(newbot);
 

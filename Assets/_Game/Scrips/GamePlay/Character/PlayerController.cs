@@ -3,9 +3,14 @@
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerController : Character
 {
+  
     private FixedJoystick _joystick;
     private HammerWeapon hammerWeapon;
     private PlayerController player;
+
+    public Renderer renderPlayer;
+    public Material materialPlayer;
+
 
     public Vector3 movement;
 
@@ -14,6 +19,7 @@ public class PlayerController : Character
     {
         _joystick = LevelManager.Instance._joystick;
         currentWeaponType = Weapontype.Hammer;
+        renderPlayer.material = materialPlayer;
         SpawnWeapon();
     }
 
@@ -29,6 +35,7 @@ public class PlayerController : Character
 
     public void OnInit()
     {
+
         if (weaponData == null)
         {
             currentWeaponType = DataManager.Instance.GetPlayerPref().weaponTypeData;

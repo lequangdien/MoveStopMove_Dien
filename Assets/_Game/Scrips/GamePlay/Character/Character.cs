@@ -34,21 +34,27 @@ public class Character : MonoBehaviour
     public Weapon weaponSpawn;
 
     public WeaponData WeaponData { get => weaponData; set => weaponData = value; }
-    //   public Weapon WeaponSpawn { get => weaponSpawn; set => weaponSpawn = value; }
 
 
     protected virtual void Update()
     {
-        nearEnemy = null;
         CheckBoxBot();
+        CheckStopIdle();
+        RestTarget();
+    }
+    public void CheckStopIdle()
+    {
         if (isIdle && !isAttack && nearEnemy != null)
         {
             isAttack = true;
             _animator.SetBool(ConstString.IS_ATTACK, true);
             AttackBot();
             Invoke(nameof(ResetAttack), 2f);
-
         }
+    }
+    public void RestTarget()
+    {
+        nearEnemy = null;
     }
 
     public void AttackBot()
@@ -78,7 +84,6 @@ public class Character : MonoBehaviour
     public void DestroyGameObject()
     {
 
-        //   Destroy(gameObject);
         LeanPool.Despawn(gameObject);
     }
 
@@ -103,15 +108,7 @@ public class Character : MonoBehaviour
                     }
                 }
             }
-            //if (!isIndicate)
-            //{
-            //    Bot botComponet = nearEnemy.GetComponent<Bot>();
-            //    if (botComponet != null)
-            //    {
-            //        botComponet.indicate.SetActive(true);
-            //        isIndicate = true;
-            //    }
-            //}
+
         }
         if (isIdle)
         {
@@ -120,16 +117,7 @@ public class Character : MonoBehaviour
         }
         else
         {
-            //if (isIndicate)
-            //{
-            //    Bot botComponet = nearEnemy.GetComponent<Bot>();
-            //    if (botComponet != null)
-            //    {
-            //        botComponet.indicate.SetActive(false);
-            //        isIndicate = false;
-            //    }
-
-            //}
+ 
             nearEnemy = null;
 
         }

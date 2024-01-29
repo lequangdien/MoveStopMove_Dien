@@ -7,6 +7,7 @@ public class DataManager : Singleton<DataManager>
     public List<WeaponData> listWeaponItemData;
     public Weapontype listWeapontype;
     public UseData useData;
+    public Sprite spriteShot;
     private void Start()
     {
         listWeaponItemData = WeaponDataSO.weaponListData;
@@ -47,5 +48,9 @@ public class DataManager : Singleton<DataManager>
             }
         }
         return null;
+    }
+    public void TestIntanceShot()
+    {
+
     }
 }

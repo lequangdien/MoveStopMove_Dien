@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -26,9 +27,18 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] public GameObject weaponSkinOj;
     [SerializeField] public GameObject settingGameObject;
     [SerializeField] public Button settingButton;
+    [SerializeField] public Button exitShopSkin;
+
+
 
     private Weapon weapon;
     private int index;
+
+    //TestImage;
+    public List<Sprite> imageSprites;
+    public GameObject imagePrefab;
+    public Transform parentTransform;
+    public int numberOfImages = 10;
     private void Start()
     {
         index = 0;
@@ -41,6 +51,7 @@ public class UiManager : Singleton<UiManager>
         backShopWeapon.onClick.AddListener(BackWeapon);
         weaponShopSkin.onClick.AddListener(ShopSkin.Instance.shopSKin);
         settingButton.onClick.AddListener(SettingUI);
+        exitShopSkin.onClick.AddListener (ExitShopSkin);
     }
     private void Update()
     {
@@ -53,6 +64,12 @@ public class UiManager : Singleton<UiManager>
 
 
     }
+    public void ExitShopSkin()
+    {
+        weaponSkinOj.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+   
 
     public void TurnOffMainMenu()
     {
@@ -86,7 +103,7 @@ public class UiManager : Singleton<UiManager>
     {
         weapon = Instantiate(DataManager.Instance.WeaponDataSO.weaponListData[index].weapon, point.transform);
         weapon.gameObject.transform.localScale += new Vector3(weapon.transform.localScale.x * 4, weapon.transform.localScale.y * 4, weapon.transform.localScale.z * 4);
-        //weapon.gameObject.transform.rotation= Quaternion.Euler(0,90,0);
+      //  weapon.transform.Rotate(Vector3.forward, Time.deltaTime *rotationSpeed);
     }
     public void DestroyWeapon(Weapon weapon)
     {
@@ -152,6 +169,22 @@ public class UiManager : Singleton<UiManager>
     {
         selectWeaponOj.SetActive(false);
         unSelectWeaponOj.SetActive(true);
+    }
+    public void SetImage()
+    {
+        for (int i=0;i<numberOfImages;i++)
+        {
+            GameObject imageObject = Instantiate(imagePrefab,parentTransform);
+            Image imageCompoient=imageObject.GetComponent<Image>();
+            if (i<imageSprites.Count)
+            {
+                imageCompoient.sprite= imageSprites[i];
+            }
+            else
+            {
+                Debug.Log("loi roi");
+            }
+        }
     }
     public enum GameState
     {

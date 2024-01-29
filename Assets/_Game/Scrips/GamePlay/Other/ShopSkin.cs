@@ -8,6 +8,7 @@ public class ShopSkin : Singleton<ShopSkin>
     {
         UiManager.Instance.mainMenu.SetActive(false);
         UiManager.Instance.weaponSkinOj.SetActive(true);
+        UiManager.Instance.SetImage();
     }
 }
   
