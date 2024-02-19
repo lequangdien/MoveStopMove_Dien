@@ -72,6 +72,7 @@
     <Compile Include="Assets\_Game\Joystick Pack\Examples\JoystickPlayerExample.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\Other\Singleton.cs" />
     <Compile Include="Assets\_Game\Scrips\Data\WeaponData\Weapon.cs" />
+    <Compile Include="Assets\_Game\Scrips\Data\HatData\HatDataSO.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\NavMesh\NavMeshUtil.cs" />
     <Compile Include="Assets\PBS Materials Variety Pack\zzz\MaterialRandomizer.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\Character\Character.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+    <Compile Include="Assets\_Game\Scrips\Data\HatData\HatData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\_Game\Login\Player Prefs Editor\PlayerPrefsUtility.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Assets\_Game\Scrips\GamePlay\Other\ShopWeapon.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
+    <Compile Include="Assets\_Game\Scrips\Data\HatData\Hat.cs" />
     <Compile Include="Assets\_Game\Scrips\Data\WeaponData\WeaponDataSO.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />

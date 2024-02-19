@@ -29,16 +29,24 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] public Button settingButton;
     [SerializeField] public Button exitShopSkin;
 
+    [SerializeField] public GameObject buttonShopSkin;
+    [SerializeField] public Button buttonShopSkinSelect;
+    
 
 
     private Weapon weapon;
     private int index;
 
     //TestImage;
-    public List<Sprite> imageSprites;
+    //private List<Image> imageList=new List<Image>();
+    //public List<Sprite> imageSprites;
+   
     public GameObject imagePrefab;
     public Transform parentTransform;
     public int numberOfImages = 10;
+
+    public List<HatData> hotlistData;
+    public int previousSelectedIndex = -1;
     private void Start()
     {
         index = 0;
@@ -52,6 +60,7 @@ public class UiManager : Singleton<UiManager>
         weaponShopSkin.onClick.AddListener(ShopSkin.Instance.shopSKin);
         settingButton.onClick.AddListener(SettingUI);
         exitShopSkin.onClick.AddListener (ExitShopSkin);
+        buttonShopSkinSelect.onClick.AddListener(SelectShopSkin);
     }
     private void Update()
     {
@@ -172,19 +181,52 @@ public class UiManager : Singleton<UiManager>
     }
     public void SetImage()
     {
-        for (int i=0;i<numberOfImages;i++)
+        for (int i = 0; i < numberOfImages; i++)
         {
-            GameObject imageObject = Instantiate(imagePrefab,parentTransform);
-            Image imageCompoient=imageObject.GetComponent<Image>();
-            if (i<imageSprites.Count)
+            GameObject imageObject = Instantiate(imagePrefab, parentTransform);
+            Image imageCompoient = imageObject.GetComponent<Image>();
+            if (i< DataManager.Instance.HatDataSO.hotListData.Count)
             {
-                imageCompoient.sprite= imageSprites[i];
+                HatData hatData = DataManager.Instance.HatDataSO.hotListData[i];
+                if (hatData !=null &&hatData.sprite !=null)
+                {
+                    imageCompoient.sprite = hatData.sprite;
+                }
+                else
+                {
+                    Debug.Log("loi!!!");
+                }
             }
             else
             {
-                Debug.Log("loi roi");
+                Debug.Log("loi !!!!!!!!!!!");
             }
+            AddTouchHandler(imageObject,i);
+
         }
+    }
+    public void AddTouchHandler(GameObject imageObject,int index)
+    {
+        imageObject.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            HandlerImageSelection(index);
+        });
+    }
+    public void HandlerImageSelection(int selectedIndex)
+    {
+        if (selectedIndex == previousSelectedIndex)
+        {
+            buttonShopSkin.SetActive(true);
+        }
+        else
+        {
+            buttonShopSkin.SetActive(false);
+        }
+        previousSelectedIndex = selectedIndex;
+    }
+    public void SelectShopSkin()
+    {
+        LevelManager.Instance.player.ChangeHatSkin();
     }
     public enum GameState
     {

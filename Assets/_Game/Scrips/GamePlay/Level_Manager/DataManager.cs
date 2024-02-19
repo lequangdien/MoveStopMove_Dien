@@ -7,12 +7,14 @@ public class DataManager : Singleton<DataManager>
     public List<WeaponData> listWeaponItemData;
     public Weapontype listWeapontype;
     public UseData useData;
-    public Sprite spriteShot;
+    public HatDataSO HatDataSO;
+    public List<HatData> listHatData;
+
     private void Start()
     {
         listWeaponItemData = WeaponDataSO.weaponListData;
+        listHatData = HatDataSO.hotListData;
         //PlayerPrefs.DeleteKey(ConstString.PLAYERPREFKEY);
-
     }
     public void Init()
     {
@@ -49,8 +51,5 @@ public class DataManager : Singleton<DataManager>
         }
         return null;
     }
-    public void TestIntanceShot()
-    {
-
-    }
+   
 }

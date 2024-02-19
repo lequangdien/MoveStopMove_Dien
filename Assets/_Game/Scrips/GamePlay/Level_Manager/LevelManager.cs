@@ -14,7 +14,7 @@ public class LevelManager : Singleton<LevelManager>
     public float maxRadius = 50;
     protected WeaponData weaponData;
     public int endPoint = 0;
-
+  
 
     private void Awake()
     {

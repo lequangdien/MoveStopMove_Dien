@@ -3,18 +3,15 @@
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerController : Character
 {
-  
+    public Transform playerPosition;
+
     private FixedJoystick _joystick;
-    private HammerWeapon hammerWeapon;
-    private PlayerController player;
 
     public Renderer renderPlayer;
     public Material materialPlayer;
-
+    
 
     public Vector3 movement;
-
-
     public void Start()
     {
         _joystick = LevelManager.Instance._joystick;
@@ -51,6 +48,26 @@ public class PlayerController : Character
         Destroy(this.weaponSpawn.gameObject);
         weaponSpawn = Instantiate(weaponData.weapon, holdWeapon);
     }
+    public void ChangeHatSkin()
+    {
+        if (UiManager.Instance.previousSelectedIndex != -1)
+        {
+            HatData selectedHatData = DataManager.Instance.HatDataSO.hotListData[UiManager.Instance.previousSelectedIndex];
+            if (selectedHatData != null && selectedHatData.hatPrefab != null)
+            {
+                  Instantiate(selectedHatData.hatPrefab,playerPosition);
+            }
+            else
+            {
+                Debug.Log("lỗi");
+            }
+        }
+        else
+        {
+            Debug.Log("lỗi tiếp");
+        }
+    }
+    
 
     public void OnMove()
     {
