@@ -214,15 +214,17 @@ public class UiManager : Singleton<UiManager>
     }
     public void HandlerImageSelection(int selectedIndex)
     {
-        if (selectedIndex == previousSelectedIndex)
-        {
-            buttonShopSkin.SetActive(true);
-        }
-        else
-        {
-            buttonShopSkin.SetActive(false);
-        }
+        //if (selectedIndex == previousSelectedIndex)
+        //{
+        //    buttonShopSkin.SetActive(true);
+        //}
+        //else
+        //{
+        //    buttonShopSkin.SetActive(false);
+        //}
+        buttonShopSkin.SetActive(true);
         previousSelectedIndex = selectedIndex;
+
     }
     public void SelectShopSkin()
     {

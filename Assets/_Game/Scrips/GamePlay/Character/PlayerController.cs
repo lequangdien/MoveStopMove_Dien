@@ -3,13 +3,13 @@
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerController : Character
 {
-    public Transform playerPosition;
 
+    private GameObject currentHat;
     private FixedJoystick _joystick;
 
     public Renderer renderPlayer;
     public Material materialPlayer;
-    
+    public Transform playerPosition;
 
     public Vector3 movement;
     public void Start()
@@ -55,7 +55,11 @@ public class PlayerController : Character
             HatData selectedHatData = DataManager.Instance.HatDataSO.hotListData[UiManager.Instance.previousSelectedIndex];
             if (selectedHatData != null && selectedHatData.hatPrefab != null)
             {
-                  Instantiate(selectedHatData.hatPrefab,playerPosition);
+                if (currentHat !=null)
+                {
+                    Destroy(currentHat);
+                }
+                  currentHat=Instantiate(selectedHatData.hatPrefab,playerPosition);
             }
             else
             {
