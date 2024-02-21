@@ -1,4 +1,5 @@
 using Lean.Pool;
+using System.Linq;
 using UnityEngine;
 
 
@@ -92,6 +93,7 @@ public class Character : MonoBehaviour
 
         Collider[] bot = Physics.OverlapSphere(transform.position, circleRadius, botLayerMark);
         float miniumDistance = Mathf.Infinity;
+        bool isAnyBotInRange = false;
         if (bot.Length > 1)
         {
             foreach (Collider collider in bot)
@@ -104,22 +106,41 @@ public class Character : MonoBehaviour
                     {
                         miniumDistance = distance;
                         nearEnemy = collider.transform;
-
+                      
                     }
+                    isAnyBotInRange=true;
                 }
             }
 
         }
-        if (isIdle)
+        if (isAnyBotInRange)
         {
-            transform.LookAt(nearEnemy);
-
+            if (isIdle)
+            {
+                transform.LookAt(nearEnemy);
+                if (!isIndicate)
+                {
+                    Bot botComponet = nearEnemy.GetComponent<Bot>();
+                    if (botComponet != null)
+                    {
+                        botComponet.indicate.SetActive(true);
+                        isIndicate = true;
+                    }
+                }
+            }
         }
         else
         {
- 
+            if (isIndicate && nearEnemy != null)
+            {
+                Bot botComponet = nearEnemy.GetComponent<Bot>();
+                if (botComponet != null)
+                {
+                    botComponet.indicate.SetActive(false);
+                    isIndicate = false;
+                }
+            }
             nearEnemy = null;
-
         }
     }
 
