@@ -6,6 +6,7 @@ public class PlayerController : Character
 
     private GameObject currentHat;
     private FixedJoystick _joystick;
+    private GameObject currentShot;
 
     public Renderer renderPlayer;
     public Material materialPlayer;
@@ -60,6 +61,25 @@ public class PlayerController : Character
                     Destroy(currentHat);
                 }
                   currentHat=Instantiate(selectedHatData.hatPrefab,playerPosition);
+            }
+            else
+            {
+                Debug.Log("lỗi");
+            }
+        }
+        else
+        {
+            Debug.Log("lỗi tiếp");
+        }
+    }
+    public void ChangeShop_Shot()
+    {
+        if (UiManager.Instance.previousSelectedIndex != -1)
+        {
+            ShotData shotData_Shot = DataManager.Instance.shotDataSO.Shotdata[UiManager.Instance.previousSelectedIndex];
+            if (shotData_Shot != null && shotData_Shot.shotMaterial != null)
+            {
+                renderPlayer.material= shotData_Shot.shotMaterial;
             }
             else
             {

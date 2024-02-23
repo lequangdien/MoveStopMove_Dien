@@ -31,22 +31,26 @@ public class UiManager : Singleton<UiManager>
 
     [SerializeField] public GameObject buttonShopSkin;
     [SerializeField] public Button buttonShopSkinSelect;
-    
 
-
+ 
     private Weapon weapon;
     private int index;
-
-    //TestImage;
-    //private List<Image> imageList=new List<Image>();
-    //public List<Sprite> imageSprites;
    
     public GameObject imagePrefab;
     public Transform parentTransform;
     public int numberOfImages = 10;
 
     public List<HatData> hotlistData;
+    public List<ShotData> shotlistData;
     public int previousSelectedIndex = -1;
+
+    public GameObject[] imageObjects;
+
+    [Header("Button Shop Skin")]
+    [SerializeField] public Button buttonShopSkin_Shot;
+    [SerializeField] public Button shot_Select;
+    [SerializeField] public GameObject ShopSkin_Shot_Select;
+
     private void Start()
     {
         index = 0;
@@ -60,7 +64,9 @@ public class UiManager : Singleton<UiManager>
         weaponShopSkin.onClick.AddListener(ShopSkin.Instance.shopSKin);
         settingButton.onClick.AddListener(SettingUI);
         exitShopSkin.onClick.AddListener (ExitShopSkin);
-        buttonShopSkinSelect.onClick.AddListener(SelectShopSkin);
+        buttonShopSkinSelect.onClick.AddListener(SelectShopSkin_Hat);
+        buttonShopSkin_Shot.onClick.AddListener(ButtonShopSkin_Shot);
+        shot_Select.onClick.AddListener(SelectShopSkin_Shot);
     }
     private void Update()
     {
@@ -181,6 +187,7 @@ public class UiManager : Singleton<UiManager>
     }
     public void SetImage()
     {
+        imageObjects = new GameObject[numberOfImages];
         for (int i = 0; i < numberOfImages; i++)
         {
             GameObject imageObject = Instantiate(imagePrefab, parentTransform);
@@ -201,34 +208,84 @@ public class UiManager : Singleton<UiManager>
             {
                 Debug.Log("loi !!!!!!!!!!!");
             }
-            AddTouchHandler(imageObject,i);
-
+            AddTouchHandler_Hat(imageObject,i);
+            imageObjects[i]= imageObject;
         }
     }
-    public void AddTouchHandler(GameObject imageObject,int index)
+    public void AddTouchHandler_Hat(GameObject imageObject,int index)
     {
         imageObject.GetComponent<Button>().onClick.AddListener(() =>
         {
-            HandlerImageSelection(index);
+            _Hat(index);
         });
     }
-    public void HandlerImageSelection(int selectedIndex)
+    public void _Hat(int selectedIndex)
     {
-        //if (selectedIndex == previousSelectedIndex)
-        //{
-        //    buttonShopSkin.SetActive(true);
-        //}
-        //else
-        //{
-        //    buttonShopSkin.SetActive(false);
-        //}
         buttonShopSkin.SetActive(true);
         previousSelectedIndex = selectedIndex;
 
     }
-    public void SelectShopSkin()
+    public void SelectShopSkin_Hat()
     {
         LevelManager.Instance.player.ChangeHatSkin();
+    }
+    
+    public void OnSwitchButtonClick()
+    {
+        foreach (GameObject imageObject in imageObjects)
+        {
+            Destroy(imageObject);
+        }
+    }
+    public void ButtonShopSkin_Shot()
+    {
+        buttonShopSkin_Shot.image.color = Color.red;
+        OnSwitchButtonClick();
+        SetImageShopSkinShot();
+    }
+    public void SetImageShopSkinShot()
+    {
+        imageObjects = new GameObject[numberOfImages];
+        for (int i = 0; i < numberOfImages; i++)
+        {
+            GameObject imageObject = Instantiate(imagePrefab, parentTransform);
+            Image imageCompoient = imageObject.GetComponent<Image>();
+            if (i < DataManager.Instance.shotDataSO.Shotdata.Count)
+            {
+                ShotData shotData = DataManager.Instance.shotDataSO.Shotdata[i];              
+                if (shotData != null && shotData.sprite != null)
+                {
+                    imageCompoient.sprite = shotData.sprite;
+                }
+                else
+                {
+                    Debug.Log("loi!!!");
+                }
+            }
+            else
+            {
+                Debug.Log("loi !!!!!!!!!!!");
+            }
+            AddTouchHandler_Shot(imageObject, i);
+            imageObjects[i] = imageObject;
+        }
+    }
+    public void SelectShopSkin_Shot()
+    {
+        LevelManager.Instance.player.ChangeShop_Shot();
+    }
+    public void AddTouchHandler_Shot(GameObject imageObject, int index)
+    {
+        imageObject.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            _Shot(index);
+        });
+    }
+    public void _Shot(int selectedIndex)
+    {
+        ShopSkin_Shot_Select.SetActive(true);
+        previousSelectedIndex = selectedIndex;
+
     }
     public enum GameState
     {

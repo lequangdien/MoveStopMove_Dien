@@ -7,6 +7,8 @@ public class DataManager : Singleton<DataManager>
     public List<WeaponData> listWeaponItemData;
     public Weapontype listWeapontype;
     public UseData useData;
+    public ShotDataSO shotDataSO;
+    public List<ShotData> shotShotData;
     public HatDataSO HatDataSO;
     public List<HatData> listHatData;
 
@@ -14,6 +16,7 @@ public class DataManager : Singleton<DataManager>
     {
         listWeaponItemData = WeaponDataSO.weaponListData;
         listHatData = HatDataSO.hotListData;
+        shotShotData = shotDataSO.Shotdata;
         //PlayerPrefs.DeleteKey(ConstString.PLAYERPREFKEY);
     }
     public void Init()
