@@ -74,7 +74,6 @@
     <Compile Include="Assets\_Game\Scrips\Data\WeaponData\Weapon.cs" />
     <Compile Include="Assets\_Game\Scrips\Data\HatData\HatDataSO.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\NavMesh\NavMeshUtil.cs" />
-    <Compile Include="Assets\PBS Materials Variety Pack\zzz\MaterialRandomizer.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\Character\Character.cs" />
     <Compile Include="Assets\_Game\Scrips\Data\Weapon\HammerBullet\HammerWeapon.cs" />
     <Compile Include="Assets\_Game\Login\EditorButton\EditorButtonAttribute.cs" />
@@ -90,7 +89,6 @@
     <Compile Include="Assets\_Game\Login\Player Prefs Editor\PlayerPrefsUtility.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\Other\CameraFollower.cs" />
-    <Compile Include="Assets\PBS Materials Variety Pack\zzz\MaterialRandomizerScript.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\ISate\PlatrolState.cs" />
     <Compile Include="Assets\_Game\Scrips\GamePlay\Level_Manager\GameManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />

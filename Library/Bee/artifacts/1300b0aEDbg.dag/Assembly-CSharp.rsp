@@ -365,8 +365,6 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.5f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/HUD Indicator/Demo/Scripts/PrefabSpawner.cs"
 "Assets/HUD Indicator/Demo/Scripts/Rotate.cs"
-"Assets/PBS Materials Variety Pack/zzz/MaterialRandomizer.cs"
-"Assets/PBS Materials Variety Pack/zzz/MaterialRandomizerScript.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
