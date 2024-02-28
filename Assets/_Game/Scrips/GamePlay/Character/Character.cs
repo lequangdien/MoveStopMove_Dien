@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
     public bool isIdle;
     public bool isAttack = false;
     public bool isDead = false;
-
+    public bool isWin = false;
     [Header("Collier Info")]
     [SerializeField] public LayerMask botLayerMark;
     [SerializeField] public float circleRadius;

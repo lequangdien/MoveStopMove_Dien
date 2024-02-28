@@ -7,6 +7,7 @@ public class ConstString : MonoBehaviour
     public const string IS_ATTACK = "IsAttack";
     public const string IS_IDLE = "IsIdle";
     public const string IS_DEAD = "IsDead";
+    public const string IS_WIN = "IsWin";
     public const string GROUND = "Ground";
     public const string BULLET = "Bullet";
     public const string DEFAULT_LAYER = "Default";

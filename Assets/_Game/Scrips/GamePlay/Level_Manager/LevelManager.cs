@@ -1,9 +1,13 @@
 ﻿using Lean.Pool;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : Singleton<LevelManager>
 {
+    [SerializeField] public TextMeshPro textComponet;
+
     public Weapontype newCurrentWeaponType;
     public FixedJoystick _joystick;
     public PlayerController player;
@@ -14,7 +18,8 @@ public class LevelManager : Singleton<LevelManager>
     public float maxRadius = 50;
     protected WeaponData weaponData;
     public int endPoint = 0;
-  
+
+   
 
     private void Awake()
     {
@@ -22,7 +27,13 @@ public class LevelManager : Singleton<LevelManager>
         player.isDead = false;
         SpawnPlayer();
     }
-
+    private void Update()
+    {
+        if (UiManager.Instance.gamestate== UiManager.GameState.PLAY&&botList.Count ==0)
+        {
+            UiManager.Instance.TurnYouWin();
+        }
+    }
 
     public void SpawnPlayer()
     {

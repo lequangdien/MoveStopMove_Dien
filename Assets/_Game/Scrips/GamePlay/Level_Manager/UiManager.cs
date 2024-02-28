@@ -52,6 +52,9 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] public Button shot_Select;
     [SerializeField] public GameObject ShopSkin_Shot_Select;
     [SerializeField] public Button buttonShopSkin_Hat;
+
+    [Header("You_win game")]
+    [SerializeField] GameObject you_Win_Obje;
     private void Start()
     {
         index = 0;
@@ -78,8 +81,6 @@ public class UiManager : Singleton<UiManager>
             uiPlayerIsDead.SetActive(true);
             _joystick.SetActive(false);
         }
-
-
     }
     public void ExitShopSkin()
     {
@@ -87,10 +88,18 @@ public class UiManager : Singleton<UiManager>
         mainMenu.SetActive(true);
     }
    
-
+    public void TurnYouWin()
+    {
+        you_Win_Obje.SetActive(true);
+        _joystick.SetActive(false);
+        gamestate = GameState.UNPLAY;
+        LevelManager.Instance.player.isWin=true;
+        LevelManager.Instance.player._animator.SetBool(ConstString.IS_WIN,true);
+    }
     public void TurnOffMainMenu()
     {
         LevelManager.Instance.SpawnBot();
+
         gamestate = GameState.PLAY;
         mainMenu.SetActive(false);
         _joystick.SetActive(true);
